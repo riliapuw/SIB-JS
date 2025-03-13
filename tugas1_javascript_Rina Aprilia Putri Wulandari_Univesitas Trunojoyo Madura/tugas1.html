@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Luas</title>
+    <style>
+        table {
+            width: 60%;
+            background-color: rgba(192, 192, 192, 0.7); 
+        }
+        td{
+            border: 2px solid white;
+            padding: 10px;
+            color: white;
+        }
+        td {
+            text-align: justify; 
+        }
+        P{
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://c.wallhere.com/photos/d0/1a/anime_artwork-108219.jpg!d'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
+    <h1 style="text-align: center; color: #ecf0f1; font-size: 50px;"><b>MENGHITUNG LUAS</b></h1>
+    <center>
+        <table>
+            <tr>
+                <td style="width: 20%;">
+                    <p>PERSEGI PANJANG</p><hr>
+                    <script>
+                        // Persegi Panjang (p adalah panjang dan l adalah lebar)
+                        let p = 10; // Menggunakan variable let 
+                        let l = 5;
+                        let luas = p * l ; //rumus luas persegi panjang
+
+                        document.write( //untuk mencetak pada halaman web
+                            "Luas dari persegi panjang dengan <br> panjang " + p + 
+                            " cm  dan lebar " + l + 
+                            " cm <br> yaitu " + luas + 
+                            " cm&sup2")  
+                    </script>
+                </td>
+
+                <td style="width: 20%;"> 
+                    <p>BUJUR SANGKAR</p><hr>
+                    <script>
+                        //bujur sangkar (s adalah sisi)
+                        let s = 15;
+                        let luas2 = s * s ; //rumus luas bujur sangkar
+
+                        document.write( //untuk mencetak pada halaman web
+                            "Luas dari bujur sangkar atau persegi dengan  sisi " + s + 
+                            " cm <br> yaitu " + luas2 + 
+                            " cm&sup2") 
+                    </script>
+                </td> 
+
+                <td style="width: 20%;">
+                    <p>SEGITIGA</p><hr>
+                    <script>
+                        //segitiga (a adalah alas dan t adalah tinggi)
+                        let a = 10;
+                        let t = 8;
+                        const x = 0.5; // Menggunakan variabel const
+                        let luas3 = x * a * t ; //rumus luas persegi segitiga
+
+                        document.write( //untuk mencetak pada halaman web
+                            "Luas dari segitiga dengan <br> alas " + a + 
+                            " cm  dan tinggi " + t + 
+                            " cm <br> yaitu " + luas3 + 
+                            " cm&sup2") 
+                    </script>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>
