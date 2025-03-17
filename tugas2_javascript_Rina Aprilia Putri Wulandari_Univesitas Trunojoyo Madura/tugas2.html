@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <style>
+        body {
+            background-image: url('https://images.hdqwalls.com/download/anime-scenery-field-4k-9j-2560x1440.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            align-items: center;
+        }
+
+        h1{
+            text-align: center;
+            color: white; 
+            font-size: 40px;
+        }
+
+        table {
+            width: 80%;
+            background-color: rgba(95, 85, 85, 0.15);
+            text-align: center;
+            border: 2px solid white;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 12px;
+            color: white;
+        }
+
+        th {
+            background: rgba(82, 60, 60, 0.6);
+            font-size: 18px;
+        }
+
+        td {
+            background: rgba(95, 85, 85, 0.15);
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .form {
+            margin-top: 20px;
+            text-align: center;
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(95, 85, 85, 0.15);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(26, 17, 17, 0.2);
+            text-align: center;
+        }
+
+        input, select {
+            width: 200px;
+            margin: 5px;
+            padding: 8px;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3b5e9e;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #77b5ee;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 80%;
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .form {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input, select {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+
+            button{
+                width: 40%;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            th, td {
+                padding: 6px;
+                font-size: 10px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><b>CETAK DATA PEGAWAI</b></h1>
+    <center>
+    <table >
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th> Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>BPJS</th>
+                <th>Tunjangan Keluarga</th>
+                <th>Total Gaji</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="pegawai"></td>
+                <td id="umur"></td>
+                <td id="jabatan"></td>
+                <td id="status"></td>
+                <td id="gapok"></td>
+                <td id="tunjab"></td>
+                <td id="bpjs"></td>
+                <td id="tunkel"></td>
+                <td id="totgaj"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" >Total Gaji Keseluruhan</td>
+                <td id="total"></td>
+            </tr>
+        </tfoot>
+    </table>
+    </center>
+
+    <form>
+        <div class="form">
+            <h1>INPUT BARU</h1>
+            <input type="text" id="Nama" placeholder="Nama" required>
+            <input type="number" id="Umur" placeholder="Umur" min="1" required>
+    
+            <select id="Jabatan" required>
+                <option value="" disabled selected>Pilih Jabatan</option>
+                <option value="Manajer">Manajer</option>
+                <option value="Asisten Manajer">Asisten Manajer</option>
+                <option value="Staff">Staff</option>
+            </select>
+    
+            <select id="Status" required>
+                <option value="" disabled selected>Pilih Status</option>
+                <option value="Menikah">Menikah</option>
+                <option value="Belum Menikah">Belum Menikah</option>
+            </select>
+            <button onclick="inputbaru()">Tambah</button>
+        </div>
+    </form>
+    <script src="tugas2.js"></script>
+</body>
+</html>
