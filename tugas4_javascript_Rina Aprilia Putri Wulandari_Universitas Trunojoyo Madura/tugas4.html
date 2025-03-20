@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Transportasi</title>
+    <style>
+        body {
+            background-image: url('https://images.hdqwalls.com/download/anime-scenery-field-4k-9j-2560x1440.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        table {
+            width: 80%;
+            background-color: rgba(95, 85, 85, 0.15);
+            text-align: center;
+            border: 2px solid white;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 12px;
+            color: white;
+        }
+
+        th {
+            background: rgba(82, 60, 60, 0.6);
+            font-size: 18px;
+        }
+
+        td {
+            background: rgba(95, 85, 85, 0.15);
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .form {
+            margin-top: 20px;
+            text-align: center;
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(95, 85, 85, 0.15);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(26, 17, 17, 0.2);
+            text-align: center;
+        }
+
+        input, select {
+            width: 150px;
+            margin: 5px;
+            padding: 8px;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3b5e9e;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #77b5ee;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 80%;
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            .form {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input, select {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                width: 40%;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            th, td {
+                padding: 6px;
+                font-size: 10px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><b>Sistem Manajemen Transportasi</b></h1>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Pelanggan</th>
+                    <th>No. Telepon</th>
+                    <th>Jenis Kendaraan</th>
+                    <th>Merk Kendaraan</th>
+                    <th>Tipe Kendaraan</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </center>
+
+    <form id="InputBaru">
+        <div class="form">
+            <h1>INPUT BARU</h1>
+            <input type="text" id="Nama" placeholder="Nama Pelanggan" required>
+            <input type="tel" id="NoTelepon" placeholder="No. Telepon" pattern="[0-9]{10,15}" required>
+            <input type="text" id="JenisKendaraan" placeholder="Jenis (Motor dll)" required>
+            <input type="text" id="Merk" placeholder="Merk (Honda dll)" required>
+            <input type="text" id="Tipe" placeholder="Tipe (Brio dll)" required>
+            <button type="submit">Tambah</button>
+        </div>
+    </form>
+    <script src="tugas4.js"></script>
+</body>
+</html>
