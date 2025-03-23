@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Produk</title>
+    <style>
+        body {
+            background-image: url('https://images.hdqwalls.com/download/anime-scenery-field-4k-9j-2560x1440.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        table {
+            width: 80%;
+            background-color: rgba(95, 85, 85, 0.15);
+            text-align: center;
+            border: 2px solid white;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 12px;
+            color: white;
+        }
+
+        th {
+            background: rgba(82, 60, 60, 0.6);
+            font-size: 18px;
+        }
+
+        td {
+            background: rgba(95, 85, 85, 0.15);
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .form {
+            margin-top: 20px;
+            text-align: center;
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(95, 85, 85, 0.15);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(26, 17, 17, 0.2);
+            text-align: center;
+        }
+
+        input, select {
+            width: 150px;
+            margin: 5px;
+            padding: 8px;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3b5e9e;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #77b5ee;
+        }
+    </style>
+</head>
+<body>
+    <h1><b>Manajemen Produk Toko Online</b></h1>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Produk</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="produk">
+            </tbody>
+        </table>
+    </center>
+
+    <form id="InputBaru">
+        <div class="form">
+            <h1>INPUT BARU</h1>
+            <input type="number" id="idProduk" placeholder="ID Produk" min="1" required>
+            <input type="text" id="namaProduk" placeholder="Nama Produk" required>
+            <input type="text" id="hargaProduk" placeholder="Harga Produk" required>
+            <button type="submit" id="bttn">Tambah</button>
+        </div>
+    </form>
+
+    <script>
+        // 5 data produk awal
+        let produkList = [
+            {id: 1, nama: "Laptop", harga:12000000},
+            {id: 2, nama: "Smartphone", harga:5000000},
+            {id: 3, nama: "Mouse", harga:100000},
+            {id: 4, nama: "Keyboard", harga:7000000},
+            {id: 5, nama: "Komputer", harga:15000000},
+        ];
+
+        // Event listener
+        document.getElementById("bttn").addEventListener("click", function(event) {
+            event.preventDefault(); // Mencegah refresh form
+            tambahProduk();
+        });
+
+        // Menampilkan produk menggunakan destructuring
+        function tampilkanProduk() {
+            const tableBody = document.getElementById("produk");
+            tableBody.innerHTML = ""; 
+
+            produkList.forEach(({ id, nama, harga }) => { 
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${id}</td>
+                    <td>${nama}</td>
+                    <td>Rp${harga}</td>
+                    <td><button onclick="hapusProduk(${id})">Hapus</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Menambahkan produk dengan Spread Operator
+        function tambahProduk() {
+            const id = parseInt(document.getElementById("idProduk").value);
+            const nama = document.getElementById("namaProduk").value;
+            const harga = parseInt(document.getElementById("hargaProduk").value);
+
+            if (!id || !nama || !harga) {
+                alert("Semua field harus diisi!");
+                return;
+            }
+
+            if (produkList.some(produk => produk.id === id)) {
+                alert(`Produk dengan ID ${id} sudah ada!`);
+                return;
+            }
+
+            produkList = [...produkList, { id, nama, harga }]; // Menggunakan Spread Operator
+            tampilkanProduk();
+
+            // Reset form setelah menambahkan produk
+            document.getElementById("idProduk").value = "";
+            document.getElementById("namaProduk").value = "";
+            document.getElementById("hargaProduk").value = "";
+        }
+
+        // Menghapus produk dengan Rest Parameter
+        function hapusProduk(...idProduk) {
+            produkList = produkList.filter(({ id }) => !idProduk.includes(id)); // Menggunakan Rest Parameter
+            tampilkanProduk();
+        }
+
+        tampilkanProduk();
+    </script>
+</body>
+</html>

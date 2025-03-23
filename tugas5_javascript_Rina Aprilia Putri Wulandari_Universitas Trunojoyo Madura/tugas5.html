@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Produk Toko Online</title>
+    <style>
+        body {
+            background-image: url('https://images.hdqwalls.com/download/anime-scenery-field-4k-9j-2560x1440.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3b5e9e;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center><button id="bttn">Klik</button></center>
+    <script>
+        //5 data produk
+        let produkList = [
+            {id: 1, nama: "Laptop", harga:12000000},
+            {id: 2, nama: "Smartphone", harga:5000000},
+            {id: 3, nama: "Mouse", harga:100000},
+            {id: 4, nama: "Keyboard", harga:7000000},
+            {id: 5, nama: "Komputer", harga:15000000},
+        ];
+
+        //Menggunakan event listener
+        const button = document.getElementById("bttn");
+        button.addEventListener("click", function (){
+            alert("Tombol Berhasil diklik")
+        });
+
+        //Menambahkan produk dengan Spread Operator
+        function tambahProduk(id, nama, harga){  //kondisi agar id tidak double
+            if (produkList.some(produk => produk.id === id)) {
+                console.log("------------------------------------------");
+                console.log("Maaf, produk dengan ID " +id + " sudah ada");
+                console.log("------------------------------------------");
+                return;
+            }
+            
+            produkList = [...produkList, { id, nama, harga }];
+                console.log("--------------------------------------");
+                console.log("Berhasil menambahkan produk: " + nama);
+                console.log("--------------------------------------");
+        };
+
+        //Menghapus produk dengan Rest Parameter
+        function hapusProduk(id) {
+            const index = produkList.findIndex(produk => produk.id === id);
+            if (index !== -1) {
+                const { id: idProduk, ...sisaProduk } = produkList[index];
+                produkList.splice(index, 1);
+                console.log("-------------------------------------------------");
+                console.log("Produk dengan ID " +idProduk+ " berhasil dihapus");
+                console.log("-------------------------------------------------");
+            } else {
+                console.log("------------------------------------------");
+                console.log("Produk dengan ID " +id +" tidak ditemukan");
+                console.log("------------------------------------------");
+            }
+        }
+
+        //Menampilkan produk dengan Destructuring
+        function tampilkanProduk() {
+            console.log("Daftar Produk Tersedia :");
+            produkList.forEach(({ id, nama, harga }) => {
+                console.log("------------------------");
+                console.log(`ID Produk: ${id}`);
+                console.log(`Nama Produk: ${nama}`);
+                console.log(`Harga: Rp${harga}`);
+                console.log("------------------------");
+            });
+        }
+
+        //Menampilkan produk awal yang tersedia 
+        tampilkanProduk();
+
+        //Menambahkan produk lalu tampilkan
+        tambahProduk(1, "Tablet", 7000000);
+        tampilkanProduk();
+
+        //Menghapus produk berdasarkan id lalu tampilkan
+        hapusProduk(2);
+        tampilkanProduk();
+    </script>
+</body>
+</html>
