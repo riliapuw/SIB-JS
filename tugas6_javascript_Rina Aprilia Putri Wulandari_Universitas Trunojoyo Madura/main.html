@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 6</title>
+</head>
+<body>
+    <script type="module">
+        import {index, store, destroy} from './controller.js';
+
+        const main = () => {
+            index();
+            console.log("");
+
+            store({nama: "Rina", umur: 20, alamat: "Semarang", email: "rina@gmail.com"})
+            store({nama: "Aprilia", umur: 21, alamat: "Bali", email: "aprilia@gmail.com"})
+            console.log("");
+
+            index();
+            console.log("");
+            
+            destroy(9);
+            console.log("");
+
+            index();
+            console.log("");
+        }
+
+        main();
+    </script>
+</body>
+</html>
