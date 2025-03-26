@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS MODULE</title>
+    <style>
+        body {
+            background-image: url('https://images.hdqwalls.com/download/anime-scenery-field-4k-9j-2560x1440.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        table {
+            width: 80%;
+            background-color: rgba(95, 85, 85, 0.15);
+            text-align: center;
+            border: 2px solid white;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 12px;
+            color: white;
+        }
+
+        th {
+            background: rgba(82, 60, 60, 0.6);
+            font-size: 18px;
+        }
+
+        td {
+            background: rgba(95, 85, 85, 0.15);
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .form {
+            margin-top: 20px;
+            text-align: center;
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(95, 85, 85, 0.15);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(26, 17, 17, 0.2);
+            text-align: center;
+        }
+
+        input, select {
+            width: 150px;
+            margin: 5px;
+            padding: 8px;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3b5e9e;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #77b5ee;
+        }
+    </style>
+</head>
+<body>
+    <h1><b>Tugas Pertemuan 6 JS</b></h1>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Umur</th>
+                    <th>Alamat</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="produk">
+            </tbody>
+        </table>
+    </center>
+
+    <form id="InputBaru">
+        <div class="form">
+            <h1>INPUT BARU</h1>
+            <input type="text" id="namaPengguna" placeholder="Nama" required>
+            <input type="number" id="umurPengguna" placeholder="Umur" min="1" required>
+            <input type="text" id="alamatPengguna" placeholder="Alamat" required>
+            <input type="email" id="emailPengguna" placeholder="Email" required>
+            <button type="submit">Tambah</button>
+        </div>
+    </form>
+
+    <script type="module">
+        import { getData, store, destroy } from './controller.js';
+
+        function updateTable() {
+            const tbody = document.getElementById("produk");
+            tbody.innerHTML = ""; 
+
+            getData().forEach((user, index) => {
+                let row = 
+                `<tr>
+                    <td>${user.nama}</td>
+                    <td>${user.umur}</td>
+                    <td>${user.alamat}</td>
+                    <td>${user.email}</td>
+                    <td><button onclick="hapusData(${index})">Hapus</button></td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            updateTable(); 
+
+            document.getElementById("InputBaru").addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const nama = document.getElementById("namaPengguna").value;
+                const umur = document.getElementById("umurPengguna").value;
+                const alamat = document.getElementById("alamatPengguna").value;
+                const email = document.getElementById("emailPengguna").value;
+
+                store({ nama, umur, alamat, email });
+
+                document.getElementById("InputBaru").reset();
+                updateTable();
+            });
+        });
+
+        window.hapusData = function(index) {
+            destroy(index);
+            updateTable();
+        };
+    </script>
+</body>
+</html>
